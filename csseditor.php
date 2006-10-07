@@ -20,10 +20,14 @@ function csseditor_add_theme_page()
 
 function list_all_css_file()
 {
+  global $blog;
   $css = get_option('cssfile');
   foreach($css as $key=>$value)
   {
+    if(SUBDOMAINS)
     echo '<link rel="stylesheet" type="text/css" href="/wp-content/plugins/csseditorforlyceum/css.php?cssid='.$key.'" />';
+    else
+    echo '<link rel="stylesheet" type="text/css" href="../wp-content/plugins/csseditorforlyceum/css.php?cssid='.$key.'&b='.$blog.'" />';
     echo "\n";
   }
 }
